@@ -6,14 +6,15 @@ const PORT = 3030;
 const app = express();
 
 const todoRoutes = require("./routes/todoRoutes");
-const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true};
+const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true };
 //const connectionOptions = { useUnifiedTopology: true, useNewUrlParser: true, useFindAndModify: false };
 
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect("mongodb://127.0.0.1:27017/To-Do-List-project", connectionOptions)
-    .then(() => console.log("Connecction OK"))
+mongoose.connect("mongodb+srv://manuelricardo:castellanos@cluster-todolist.vhnrpzx.mongodb.net/test", connectionOptions)
+    //mongoose.connect("mongodb://localhost:27017/To-Do-List-Project", connectionOptions)
+    .then(() => console.log("The Conection is OK"))
     .catch((err) => console.error(err));
 
 app.use("/todos", todoRoutes);
